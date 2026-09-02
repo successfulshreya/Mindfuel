@@ -7,6 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Full Permissive CORS Setup (Allow Netlify Requests)
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 // Database Connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB Connected Successfully"))
