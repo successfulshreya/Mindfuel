@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://backend-ecru-theta-90.vercel.app";
+const API_BASE_URL = "https://backend-git-main-shreya-sahus-projects-6949e5da.vercel.app";
 fetch('navbar.html')
     .then(res=>res.text())
     .then(data=>{
