@@ -1,0 +1,114 @@
+/* RESET AND BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh; 
+   background: linear-gradient(125deg, rgba(206, 186, 5, 0.3), rgba(248, 2, 2, 0.3));
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px); /* Safari support */
+   border-radius: 16px;
+   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #131212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* CENTER ALL CONTENT */
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* GLASS CONTAINER */
+.glass-box {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  color: #333;
+}
+
+/* NAVBAR GLASS STYLE */
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* BUTTON STYLING */
+button {
+  background-color: #ffffffcc;
+  color: #333;
+  border: 2px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+  border-color: #888;
+  transform: scale(1.05);
+}
+
+/* MOOD OPTION EMOJIS */
+.mood-option {
+  font-size: 32px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.mood-option:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* FIRST PAGE IMAGE */
+.hero-image {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 576px) {
+  .glass-box {
+    padding: 25px 20px;
+  }
+
+  .mood-option {
+    font-size: 24px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}

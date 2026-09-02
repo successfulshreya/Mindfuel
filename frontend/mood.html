@@ -1,0 +1,135 @@
+<!-- mood.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Your Mood - Mindfuel</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    body {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      /* backdrop-filter: blur(10px); */
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 500px;
+      color: white;
+    }
+
+    .mood-btn {
+      font-size: 1.5rem;
+      margin: 10px;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 10px;
+      background: #ffffff20;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .mood-btn:hover {
+      background: #ffffff40;
+      cursor: pointer;
+    }
+
+    .loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>How are you feeling today?</h1>
+
+  <!-- Mood selection -->
+  <div class="glass-card">
+    <p>Select your current mood:</p>
+    <button class="mood-btn" onclick="selectMood('happy')">😊 Happy</button>
+    <button class="mood-btn" onclick="selectMood('sad')">😔 Sad</button>
+    <button class="mood-btn" onclick="selectMood('angry')">😠 Angry</button>
+    <button class="mood-btn" onclick="skipMood()">😐 Neutral</button>
+  </div>
+
+  <!-- Thought-based mood detection -->
+  <div class="glass-card">
+    <p>Or tell us how you’re feeling:</p>
+    <textarea id="thoughtInput" class="form-control" rows="3" placeholder="Type your thoughts here..."></textarea><br>
+    <button class="mood-btn" onclick="detectMood()">Detect Mood</button>
+    <p id="status" style="color: #ffd;"></p>
+  </div>
+
+  <!-- Loader section -->
+  <div id="loader-section" class="glass-card" style="display: none;">
+    <h4>Analyzing your mood...</h4>
+    <div class="loader"></div>
+    <p>Hang tight, we’re reading your vibes!</p>
+  </div>
+
+  <script>
+    const moodQuotes = {
+      happy: "Keep smiling, it looks good on you!",
+      sad: "It’s okay to feel low. Brighter days are ahead.",
+      angry: "Take a deep breath. Peace begins with a single step.",
+      neutral: "Stay calm and carry on!"
+    };
+
+    function selectMood(mood) {
+      localStorage.setItem("moodLabel", mood);
+      localStorage.setItem("moodMessage", moodQuotes[mood]);
+      window.location.href = "moodresult.html";
+    }
+
+    function skipMood() {
+      selectMood("neutral");
+    }
+
+    function detectMood() {
+      const input = document.getElementById("thoughtInput").value.trim();
+      const loader = document.getElementById("loader-section");
+      const status = document.getElementById("status");
+
+      if (!input) {
+        status.textContent = "Please write something first.";
+        return;
+      }
+
+      loader.style.display = "block";
+      status.textContent = "";
+
+      setTimeout(() => {
+        let mood = "neutral";
+        if (input.includes("happy") || input.includes("excited") || input.includes("great")) mood = "happy";
+        else if (input.includes("sad") || input.includes("down") || input.includes("upset")) mood = "sad";
+        else if (input.includes("angry") || input.includes("mad") || input.includes("frustrated")) mood = "angry";
+
+        localStorage.setItem("moodLabel", mood);
+        localStorage.setItem("moodMessage", moodQuotes[mood]);
+
+        window.location.href = "moodresult.html";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
