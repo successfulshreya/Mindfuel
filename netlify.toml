@@ -1,31 +1,13 @@
-[functions]
-
-  [functions.emails]
-  included_files = [
-    "./emails/**"
-  ]
+[build]
+  publish = "frontend"
 
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+  from = "/api/*"
+  to = "https://backend-git-main-shreya-sahus-projects-6949e5da.vercel.app/:splat"
+  status = 200
+  force = true
 
-[context]
-
-  [context.production]
-
-    [context.production.functions]
-
-      [context.production.functions.emails]
-      included_files = [
-        "./emails/**"
-      ]
-
-  [context.master]
-
-    [context.master.functions]
-
-      [context.master.functions.emails]
-      included_files = [
-        "./emails/**"
-      ]
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
